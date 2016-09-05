@@ -1,0 +1,8 @@
+.top-nav {
+	padding-top:2px;
+	margin-left:20px;
+}
+
+.top-nav > button {
+	background:#3A4BA7;
+}
