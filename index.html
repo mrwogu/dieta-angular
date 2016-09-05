@@ -3,49 +3,55 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-2">
 
-	<link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="node_modules/angularjs-slider/dist/rzslider.css">
+	<link rel="stylesheet" href="node_modules/angular-motion/dist/angular-motion.css">
+	<link rel="stylesheet" href="content/flatty.css">
 	<link rel="stylesheet" href="content/app.css">
 	
 	<script src="node_modules/angular/angular.js"></script>
 	<script src="node_modules/angular-route/angular-route.js"></script>
-	
+
+	<script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
 	<script src="node_modules/angular-animate/angular-animate.js"></script>
-	<script src="node_modules/angular-aria/angular-aria.js"></script>
+	<script src="node_modules/angular-strap/dist/angular-strap.js"></script>
+	<script src="node_modules/angular-strap/dist/angular-strap.tpl.js"></script>
 	<script src="node_modules/angular-messages/angular-messages.js"></script>
-	<script src="node_modules/angular-material/angular-material.js"></script>
+	<script src="node_modules/angularjs-slider/dist/rzslider.js"></script>
+
 	
 	<script src="app/app.js"></script>
 	<script src="app/modules/informations.module.js"></script>
+
+	
 </head>
 
-<body ng-controller="appController as vm" ng-cloak>
+<body ng-controller="appCtrl as vm" ng-cloak>
 		 
-	 <div layout="row" layout-xs="column">
-		<div flex="100">
-		
-			<md-toolbar class="md-toolbar-tools" layout="row">
-				<h2>{{vm.appName}}</h2>
-				
-				<section class="top-nav" layout="row" layout-align="">
-					<md-button href="#/dane-personalne" class="">Informacje personalne</md-button>
-					<md-button class="">Zapotrzebowanie kaloryczne</md-button>
-				</section>
-				
-				<span flex></span>
-				<span class="md-caption pull-right">{{vm.appVersion}}</span>
-			</md-toolbar>
-			
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#/">{{vm.appName}}</a>
 		</div>
-	 </div>
-	 <div layout="column" layout-xs="column">
-		<div flex="100">
-		
-			<md-content flex layout-padding>
-				<div ng-view></div>
-			</md-content>
-			
+
+		<div id="navbar">
+			<ul class="nav navbar-nav">
+				<li><a href="#/dane-personalne">Dane personalne</a></li>
+				<li><a href="#/kalorie">Kalorie</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">ver {{vm.appVersion}}</a></li>
+			</ul>
 		</div>
-	 </div>
+	</div>
+</nav>
+
+<div class="container">
+	<div ng-view></div>
+</div>
+
 </body>	
 
 </html>

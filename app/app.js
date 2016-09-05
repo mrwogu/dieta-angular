@@ -2,41 +2,40 @@
 	'use strict';
 	
 	var appDieta = angular.module('appDieta', [
-		'ngMaterial', 
 		'ngRoute',
-		'informationsModule'
+		'ngAnimate',
+		'informationsModule',
+		'mgcrea.ngStrap',
+		'ngSanitize'
 	]);
 	
 	angular
 		.module('appDieta')
-		.controller('appController', appController)
+		.controller('appCtrl', appCtrl)
 		.config(appConfig)
 		.value('appName', 'Kalkulator dietetyczny')
 		.value('appVersion', '1.0.0')
 		;
 	
-	appConfig.$inject = ['$mdThemingProvider', '$routeProvider'];
-	function appConfig($mdThemingProvider, $routeProvider) {
+	appConfig.$inject = ['$routeProvider'];
+	function appConfig($routeProvider) {
 		
 		var dirPrefix = "app/views/"
-		
-		$mdThemingProvider.theme('default')
-			.primaryPalette('indigo')
-			.accentPalette('orange');
 					
 		$routeProvider
 			.when("/dane-personalne", {
-				controller: 'personalInformation',
+				controller: 'personalInformationCtrl',
+				controllerAs: 'vm',
 				templateUrl : dirPrefix + 'informations/personal-informations.tpl'
 			})
 			.when("/", {
-				controller: 'appController',
+				controller: 'appCtrl',
 				templateUrl : dirPrefix + 'app/app.tpl'
 			})
 	}
 	
-	appController.$inject = ['appName', 'appVersion'];
-	function appController(appName, appVersion) {
+	appCtrl.$inject = ['appName', 'appVersion'];
+	function appCtrl(appName, appVersion) {
 		
 		var vm = this;
 

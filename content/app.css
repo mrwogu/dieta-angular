@@ -1,8 +1,7 @@
-.top-nav {
-	padding-top:2px;
-	margin-left:20px;
+.input-group-addon {
+	min-width: 70px;
 }
 
-.top-nav > button {
-	background:#3A4BA7;
+.input-error {
+	color:#CC0000;
 }
