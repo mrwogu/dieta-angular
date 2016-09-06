@@ -22,17 +22,19 @@
 			//tdee2
 			//tea
 			
-			var gymIntense = teaGymIntenseConfig[person.gym.workoutIntense];
-			var cardioIntense = teaCardioIntenseConfig[person.cardio.cardioIntense];
-			
 			var teaGym = 0;
 			var teaCardio = 0;
 
-			if (person.isGym)
+			if (person.isGym) {
+				var gymIntense = teaGymIntenseConfig[person.gym.workoutIntense];
 				teaGym = (parseInt(person.gym.workoutAmount) * parseInt(person.gym.workoutTime) * parseInt(gymIntense)) / 7;
+			}
+				
 			
-			if (person.isCardio)
+			if (person.isCardio) {
+				var cardioIntense = teaCardioIntenseConfig[person.cardio.cardioIntense];
 				teaCardio = (parseInt(person.cardio.cardioAmount) * parseInt(person.cardio.cardioTime) * parseInt(cardioIntense)) / 7;
+			}
 
 			var tea = parseFloat(teaGym) + parseFloat(teaCardio);
 
