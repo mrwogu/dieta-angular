@@ -13,7 +13,8 @@
     "angular-strap": "^2.3.9",
     "angularjs-slider": "^5.4.3",
     "bootstrap": "^3.3.7",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {},
   "scripts": {
