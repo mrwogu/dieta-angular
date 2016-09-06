@@ -1,3 +1,7 @@
+body {
+	margin-bottom:30px;
+}
+
 .input-group-addon {
 	min-width: 70px;
 }
@@ -32,4 +36,8 @@
 
 .fontGrayed {
 	color:#8b8b8b;
+}
+
+.margintop10 {
+	margin-top:10px;
 }
