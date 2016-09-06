@@ -2,42 +2,10 @@ body {
 	margin-bottom:30px;
 }
 
-.input-group-addon {
-	min-width: 70px;
-}
-
-.input-error {
-	color:#CC0000;
-}
-
-.control-value { 
-	padding-top: 11px;
-}
 
 .hr-well {
 	border-top: 1px solid #c0bdbd;
 	margin-top: 11px;
     margin-bottom: 1px;
-}
-
-
-.form-group-nomargins {
-	margin-bottom: 3px;
-	overflow: hidden;
-}
-
-.font09 {
-	font-size:0.9em;
-}
-
-.font105 {
-	font-size:1.05em;
-}
-
-.fontGrayed {
-	color:#8b8b8b;
-}
-
-.margintop10 {
-	margin-top:10px;
+	width: 60%;
 }

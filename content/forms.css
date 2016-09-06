@@ -1,0 +1,42 @@
+.control-value { 
+	padding-top: 11px;
+}
+
+.form-group-nomargins {
+	margin-bottom: 3px;
+	overflow: hidden;
+}
+
+.input-group-addon {
+	min-width: 70px;
+}
+
+.input-error {
+	color:#CC0000;
+}
+
+.inputHighlight {
+    background: #fcffcc;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.btn-group > .btn-default {
+    color: #000;
+    background-color: #ececec;
+    border-color: #dbdbdb;
+}
+
+
+.btn-group > .btn-default:active, .btn-group > .btn-default.active, .btn-group > .open > .dropdown-toggle.btn-default {
+    color: #fff;
+    background-color: #669dc2;
+    border-color: #7e8f9b;
+}
+
+.btn-group >.btn:active, .btn-group > .btn.active {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+    box-shadow: inset 0 1px 5px rgba(203, 203, 203, 0.1);
+}

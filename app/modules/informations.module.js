@@ -18,13 +18,19 @@
 		.filter('greet', greetFilter)
 		;
 	
-	personalInformationCtrl.$inject = ['$scope', 'bmrService', '$localStorage'];
-	function personalInformationCtrl($scope, bmrService, $localStorage) {
+	personalInformationCtrl.$inject = ['$scope', 'bmrService', 'tdeeService', '$localStorage'];
+	function personalInformationCtrl($scope, bmrService, tdeeService, $localStorage) {
 		
 		var vm = this;
-			
 		vm.localStorage = $localStorage;
 		
+		vm.person = vm.localStorage.personForm;
+
+		$scope.$watch('vm.person', function(){
+			if (typeof vm.person == "object" && Object.keys(vm.person).length)
+				vm.localStorage.personForm = vm.person;
+		}, true);
+
 		if (typeof vm.localStorage.person == "object")
 			vm.person = vm.localStorage.person;
 		
@@ -33,21 +39,30 @@
 			vm.personForm.submitted = true;
 						
 			if (!vm.personForm.$invalid) {
-				vm.person.bmr = bmrService.getBmr(
-					vm.person.age, 
-					vm.person.weight, 
-					vm.person.height, 
-					vm.person.gander
-				);
+
+				vm.person.bmr = bmrService.getBmr(vm.person);
+				vm.person.tdee = tdeeService.getTdee(vm.person);
 				
-				vm.localStorage.person = vm.person;
-				
+				console.log(vm.person.tdee);
+
+				//vm.localStorage.person = vm.person;
 			}
 		}
 		
+		vm.dietTargetChange = function() {
+
+			if (vm.person.target == "i")
+				vm.person.differental = 300;
+			else if (vm.person.target == "n")
+				vm.person.differental = 0;
+			else if (vm.person.target == "d")
+				vm.person.differental = -300;
+		}
+
 		vm.clear = function() {
 			delete vm.localStorage.person;
-			vm.person = {};
+			//delete vm.localStorage.personForm;
+			vm.person.bmr = undefined;
 		}
 		
 	}
