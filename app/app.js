@@ -13,7 +13,6 @@
 		.module('appDieta')
 		.controller('appCtrl', appCtrl)
 		.config(appConfig)
-		.value('appName', 'Kalkulator dietetyczny')
 		.value('appVersion', '1.0.0')
 		;
 	
@@ -30,12 +29,11 @@
 			})
 	}
 	
-	appCtrl.$inject = ['appName', 'appVersion'];
-	function appCtrl(appName, appVersion) {
+	appCtrl.$inject = ['appVersion'];
+	function appCtrl(appVersion) {
 		
 		var vm = this;
 
-		vm.appName = appName;
 		vm.appVersion = appVersion;
 	}
 
