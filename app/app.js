@@ -23,14 +23,10 @@
 		var dirPrefix = "app/views/"
 					
 		$routeProvider
-			.when("/dane-personalne", {
+			.when("/", {
 				controller: 'personalInformationCtrl',
 				controllerAs: 'vm',
 				templateUrl : dirPrefix + 'informations/personal-informations.tpl'
-			})
-			.when("/", {
-				controller: 'appCtrl',
-				templateUrl : dirPrefix + 'app/app.tpl'
 			})
 	}
 	
