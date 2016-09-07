@@ -3,15 +3,18 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-2">
 
+	<link rel="icon" href="content/images/ico.ico">
+
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="node_modules/angularjs-slider/dist/rzslider.css">
 	<link rel="stylesheet" href="node_modules/angular-motion/dist/angular-motion.css">
-	<link rel="stylesheet" href="content/slider.css">
-	<link rel="stylesheet" href="content/flatty.css">
-	<link rel="stylesheet" href="content/app.css">
-	<link rel="stylesheet" href="content/forms.css">
-	<link rel="stylesheet" href="content/helpClasses.css">
+	<link rel="stylesheet" href="content/css/slider.css">
+	<link rel="stylesheet" href="content/css/flatty.css">
+	<link rel="stylesheet" href="content/css/app.css">
+	<link rel="stylesheet" href="content/css/forms.css">
+	<link rel="stylesheet" href="content/css/helpClasses.css">
+	<link rel="stylesheet" href="content/css/animation.css">
 	
 	<script src="node_modules/angular/angular.js"></script>
 	<script src="node_modules/angular-route/angular-route.js"></script>
@@ -23,11 +26,15 @@
 	<script src="node_modules/angular-messages/angular-messages.js"></script>
 	<script src="node_modules/angularjs-slider/dist/rzslider.js"></script>
 	<script src="node_modules/ngstorage/ngStorage.js"></script>
-	
+
 	<script src="app/app.js"></script>
 	<script src="app/services/calculations.service.js"></script>
 	<script src="app/modules/informations.module.js"></script>
-	
+	<script src="app/modules/caloricIntake.module.js"></script>
+	<script src="app/modules/macro.module.js"></script>
+
+	<title>Kalkulator kalorii</title>
+
 </head>
 
 <body ng-controller="appCtrl as vm" ng-cloak>
@@ -39,10 +46,11 @@
 		</div>
 
 		<div id="navbar">
-			<!--<ul class="nav navbar-nav">
-				<li><a href="#/dane-personalne">Zapotrzebowanie kaloryczne</a></li>
-				<li><a href="#/kalorie">Kalorie</a></li>
-			</ul>-->
+			<ul class="nav navbar-nav">
+				<li><a ng-class="{active : vm.isActiveMenu('/dane-personalne')}" href="#/dane-personalne">Dane personalne</a></li>
+				<li><a ng-class="{active : vm.isActiveMenu('/zapotrzebowanie-kaloryczne')}" href="#/zapotrzebowanie-kaloryczne">Zapotrzebowanie kaloryczne</a></li>
+				<li><a ng-class="{active : vm.isActiveMenu('/makro-i-posilki')}" href="#/makro-i-posilki">Makro i posiłki</a></li>
+			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">ver {{vm.appVersion}}</a></li>
@@ -52,7 +60,7 @@
 </nav>
 
 <div class="container">
-	<div ng-view></div>
+	<div ng-view class="viewAnimation"></div>
 </div>
 
 </body>	

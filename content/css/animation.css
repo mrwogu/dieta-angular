@@ -1,0 +1,34 @@
+.viewAnimation {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+}
+.viewAnimation.ng-enter {
+  -webkit-animation-name: fadeAndScaleIn;
+          animation-name: fadeAndScaleIn;
+}
+
+.viewAnimation.ng-leave {
+    display:none;
+}
+
+@-webkit-keyframes fadeAndScaleIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+                transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeAndScaleIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+                transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+    }
+}

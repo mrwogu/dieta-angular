@@ -1,11 +1,14 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-		<p class="well">Postaraj się dokładnie uzupełnić poniższy formularz. <b>Nie zniechęć się dużą ilością pytań.</b> Możesz odnieść wrażenie, że niektóre pytania są nadmiarowe lub powtarzają się, jednak jest to spowodowane połączeniem kilku metod wyznaczania zapotrzebowania kalorycznego na raz, z których później zostanie wyciągnięta wartość średnia.</p>
-        <div class="panel-group" ng-show="!vm.person.bmr">
+		<h2>Dane personalne</h2>
+		
+		<p>Postaraj się dokładnie uzupełnić poniższy formularz. <b>Nie zniechęć się dużą ilością pytań.</b> Możesz odnieść wrażenie, że niektóre pytania są nadmiarowe lub powtarzają się, jednak jest to spowodowane połączeniem kilku metod wyznaczania zapotrzebowania kalorycznego na raz.</p>
+
+        <div class="panel-group margintop30">
 			<form name="vm.personForm" class="form-horizontal" novalidate>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4>Dane personalne</h4>
+						<h4>Podstawowe dane</h4>
 						<p>Posłużą do obliczenia podstawowego zapotrzebowania kalorycznego (BMR)</p>
 					</div>
 					<div class="panel-body">
@@ -150,7 +153,7 @@
 							<div class="col-sm-8" bs-radio-group>
 								<div class="btn-group" ng-model="vm.person.isGym" bs-radio-group>
 									<label class="btn btn-default"><input type="radio" name="isGym" value="1" required/>Tak</label>
-									<label class="btn btn-default"><input type="radio" name="isGym" value="0" required/>Nie</label>
+									<label class="btn btn-default"><input type="radio" name="isGym" value="0" required/>Brak</label>
 								</div>
 								<div ng-messages="vm.personForm.isGym.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.isGym.$touched || vm.personForm.submitted">
 									<div ng-message="required">To pole jest wymagane</div>
@@ -211,7 +214,7 @@
 							<div class="col-sm-8" bs-radio-group>
 								<div class="btn-group" ng-model="vm.person.isCardio" bs-radio-group>
 									<label class="btn btn-default"><input type="radio" name="isCardio" value="1" required/>Tak</label>
-									<label class="btn btn-default"><input type="radio" name="isCardio" value="0" required/>Nie</label>
+									<label class="btn btn-default"><input type="radio" name="isCardio" value="0" required/>Brak</label>
 								</div>
 								<div ng-messages="vm.personForm.isCardio.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.isCardio.$touched || vm.personForm.submitted">
 									<div ng-message="required">To pole jest wymagane</div>
@@ -338,108 +341,6 @@
 			</div>
 
         </div>
-		
-       <div class="well am-fade" ng-show="vm.person.bmr">
-			<div class="form-horizontal">
-				<h4>Wynik obliczeń <button class="btn btn-default pull-right" ng-click="vm.clearSummary()">Edytuj dane personalne</button></h4>
-			
-				<hr />
 
-				<div class="form-group">
-					<label class="control-label col-sm-7 font11" for="weight">Podstawowe dzienne zapotrzebowanie kaloryczne (BMR)</label>
-					<div class="col-sm-5 control-value font11">
-						<span>{{vm.person.bmr.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.bmrDetails=!vm.options.bmrDetails">(szczegóły)</a></span>
-					</div>
-				</div>
-
-				<div ng-if="vm.options.bmrDetails" class="am-fade">
-					<div class="form-group-nomargins font09 fontGrayed">
-						<label class="control-label col-sm-7" for="weight">Według wzoru Harrisa-Benedicta</label>
-						<div class="col-sm-5 control-value">
-							<span>{{vm.person.bmr.harrisBenedict1}} kcal</span>
-						</div>
-					</div>
-					
-					<div class="form-group-nomargins font09 fontGrayed">
-						<label class="control-label col-sm-7" for="weight">Według ulepszonego wzoru Harrisa-Benedicta</label>
-						<div class="col-sm-5 control-value">
-							<span>{{vm.person.bmr.harrisBenedict2}} kcal</span>
-						</div>
-					</div>
-					<div class="form-group-nomargins font09 fontGrayed">
-						<label class="control-label col-sm-7" for="weight">Według wzoru Mifflina St Jeora</label>
-						<div class="col-sm-5 control-value">
-							<span>{{vm.person.bmr.hifflinStJeor}} kcal</span>
-						</div>
-					</div>
-					
-					<hr class="hr-well" />
-					
-					<div class="form-group-nomargins font09 fontGrayed">
-						<label class="control-label col-sm-7" for="weight">Wartość średnia</label>
-						<div class="col-sm-5 control-value">
-							<span>{{vm.person.bmr.average}} kcal</span>
-						</div>
-					</div>
-
-					<hr class="hr-well" />
-
-					<div class="form-group-nomargins font09 fontGrayed">
-						<div class="col-md-8 col-md-offset-2 control-value">
-							<span>*Wybrana wartość to wartość średnia.</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-sm-7 font11" for="weight">Dzienne zapotrzebowanie kaloryczne</label>
-					<div class="col-sm-5 control-value font11">
-						<span>{{vm.person.tdee.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.tdeeDetails=!vm.options.tdeeDetails">(szczegóły)</a></span>
-					</div>
-				</div>
-
-				<div ng-if="vm.options.tdeeDetails" class="am-fade">
-					<div class="form-group-nomargins font09 fontGrayed">
-						<label class="control-label col-sm-7" for="weight">Według wzorów Harrisa-Benedicta</label>
-						<div class="col-sm-5 control-value">
-							<span>{{vm.person.tdee.harrisBenedict}} kcal</span>
-						</div>
-					</div>
-					<div class="form-group-nomargins font09 fontGrayed">
-						<label class="control-label col-sm-7" for="weight">Według wzoru Mifflina St Jeora</label>
-						<div class="col-sm-5 control-value">
-							<span>{{vm.person.tdee.hifflinStJeor}} kcal</span>
-						</div>
-					</div>
-					
-					<hr class="hr-well" />
-
-					<div class="form-group-nomargins font09 fontGrayed">
-						<div class="col-md-8 col-md-offset-2 control-value">
-							<span>*Wybrana wartość to wynik ze wzoru Mifflina St Jeora. Jest on zależny od wielu zmiennych przez co jest o wiele dokładniejszy. Wzór Harrisa-Benedicta ma zbyt duży rozrzut wartości.</span>
-						</div>
-					</div>
-				</div>
-
-				<hr class="hr-well" />
-
-				<div class="form-group">
-					<label class="control-label col-sm-7 font11" for="weight">Cel diety</label>
-					<div class="col-sm-5 control-value font11">
-						<span ng-if="vm.person.differental < 0">Redukcja wagi ( {{vm.person.differental}} kcal )</span>
-						<span ng-if="vm.person.differental == 0">Utrzymanie wagi</span>
-						<span ng-if="vm.person.differental > 0">Zdobywanie masy ( +{{vm.person.differental}} kcal )</span>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-sm-7 font11 fontHighlight" for="weight">Dzienne zapotrzebowanie uwzględniając cel</label>
-					<div class="col-sm-5 control-value font11 fontHighlight">
-						<span><b>{{vm.person.tdee.average*1 + vm.person.differental*1}} kcal</b></span>
-					</div>
-				</div>
-
-			</div>
-		</div>
-    </div>
+	</div>
 </div>

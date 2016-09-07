@@ -4,9 +4,12 @@
 	var appDieta = angular.module('appDieta', [
 		'ngRoute',
 		'ngAnimate',
-		'informationsModule',
 		'mgcrea.ngStrap',
-		'ngSanitize'
+		'ngSanitize',
+		'ngStorage',
+		'informationsModule',
+		'caloricIntakeModule',
+		'macroModule',
 	]);
 	
 	angular
@@ -23,16 +26,35 @@
 					
 		$routeProvider
 			.when("/", {
+				controller: 'appCtrl',
+				controllerAs: 'vm',
+				templateUrl : dirPrefix + 'app.tpl'
+			})
+			.when("/dane-personalne", {
 				controller: 'personalInformationCtrl',
 				controllerAs: 'vm',
-				templateUrl : dirPrefix + 'informations/personal-informations.tpl'
+				templateUrl : dirPrefix + 'personal-informations.tpl'
+			})
+			.when("/zapotrzebowanie-kaloryczne", {
+				controller: 'caloricIntakeCtrl',
+				controllerAs: 'vm',
+				templateUrl : dirPrefix + 'caloric-intake.tpl'
+			})
+			.when("/makro-i-posilki", {
+				controller: 'macroCtrl',
+				controllerAs: 'vm',
+				templateUrl : dirPrefix + 'macro.tpl'
 			})
 	}
 	
-	appCtrl.$inject = ['appVersion'];
-	function appCtrl(appVersion) {
+	appCtrl.$inject = ['appVersion', '$location', '$localStorage'];
+	function appCtrl(appVersion, $location, $localStorage) {
 		
 		var vm = this;
+
+		vm.isActiveMenu = function(path) {
+			return ($location.path().substr(0, path.length) === path) ? true : false;
+		}
 
 		vm.appVersion = appVersion;
 	}

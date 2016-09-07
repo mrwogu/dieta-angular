@@ -18,8 +18,8 @@
 		.filter('greet', greetFilter)
 		;
 	
-	personalInformationCtrl.$inject = ['$scope', 'bmrService', 'tdeeService', '$localStorage'];
-	function personalInformationCtrl($scope, bmrService, tdeeService, $localStorage) {
+	personalInformationCtrl.$inject = ['$scope', 'bmrService', 'tdeeService', '$localStorage', '$location'];
+	function personalInformationCtrl($scope, bmrService, tdeeService, $localStorage, $location) {
 		
 		/* public */
 		
@@ -40,11 +40,11 @@
 
 		vm.submit = function() {
 			
-			vm.personForm.submitted = true;	
-			
 			if (!vm.personForm.$invalid) {
 				vm.person.bmr = bmrService.getBmr(vm.person);
 				vm.person.tdee = tdeeService.getTdee(vm.person);
+				
+				$location.path("/zapotrzebowanie-kaloryczne");
 			}
 		}
 		
@@ -56,11 +56,6 @@
 				vm.person.differental = 0;
 			else if (vm.person.target == "d")
 				vm.person.differental = -300;
-		}
-
-		vm.clearSummary = function() {
-			vm.person.bmr = undefined;
-			vm.person.tdee = undefined;
 		}
 		
 		vm.clear = function() {

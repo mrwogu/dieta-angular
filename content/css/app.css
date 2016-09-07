@@ -1,0 +1,23 @@
+body {
+	margin-bottom:30px;
+}
+
+
+.hr-well {
+	border-top: 1px solid #d8d8d8;
+	margin-top: 11px;
+    margin-bottom: 1px;
+	width: 60%;
+}
+
+.hr-well-margins {
+	border-top: 1px solid #d8d8d8;
+	width: 60%;
+
+    margin-top: 25px;
+    margin-bottom: 11px;
+}
+
+a.active {
+	color: #18bc9c !important;
+}
