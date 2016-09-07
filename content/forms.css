@@ -31,7 +31,7 @@
 .btn-group > .btn-default:active, .btn-group > .btn-default.active, .btn-group > .open > .dropdown-toggle.btn-default {
     color: #fff;
     background-color: #669dc2;
-    border-color: #7e8f9b;
+    border-color: #92a2ae;
 }
 
 .btn-group >.btn:active, .btn-group > .btn.active {

@@ -1,0 +1,27 @@
+.rzslider .rz-ticks .rz-tick .rz-tick-value {
+    top: -30px;
+    font-size: 0.85em;
+}
+
+.rzslider {
+    margin: 30px 0 20px 10px;
+    width: 95%;
+}
+
+.rzslider .rz-ticks .rz-tick {
+    width: 8px;
+    height: 9px;
+}
+
+
+.rzslider .rz-ticks .rz-tick, .rzslider .rz-bar {
+    background: #dbdbdb;
+}
+
+.rzslider .rz-pointer.rz-active:after {
+  background-color: #fff;
+}
+
+.rzslider .rz-pointer {
+    background-color: #74b2db;
+}
