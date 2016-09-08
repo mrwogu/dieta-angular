@@ -7,96 +7,87 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4>Proporcje makroskładników</h4>
-						<p></p>
+						<p>Wybierz procentowy rozkład makroskładników w <b>{{vm.person.tdee.all}} kcal</b></p>
 					</div>
 					<div class="panel-body">
-						<div class="form-group">
-							<label class="control-label col-sm-7" for="weight">Podstawowe dzienne zapotrzebowanie kaloryczne (BMR)</label>
-							<div class="col-sm-5 control-value">
-								<span>{{vm.person.bmr.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.bmrDetails=!vm.options.bmrDetails">(szczegóły)</a></span>
-							</div>
-						</div>
-
-						<div ng-if="vm.options.bmrDetails" class="am-fade">
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzoru Harrisa-Benedicta</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.harrisBenedict1}} kcal</span>
-								</div>
-							</div>
-							
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według ulepszonego wzoru Harrisa-Benedicta</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.harrisBenedict2}} kcal</span>
-								</div>
-							</div>
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzoru Mifflina St Jeora</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.hifflinStJeor}} kcal</span>
-								</div>
-							</div>
-
-							<hr class="hr-well" />
-
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Wartość średnia</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.average}} kcal</span>
-								</div>
-							</div>
-
-						</div>
-
 
 						<div class="form-group">
-							<label class="control-label col-sm-7" for="weight">Dzienne zapotrzebowanie kaloryczne</label>
-							<div class="col-sm-5 control-value">
-								<span>{{vm.person.tdee.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.tdeeDetails=!vm.options.tdeeDetails">(szczegóły)</a></span>
-							</div>
-						</div>
-
-						<div ng-if="vm.options.tdeeDetails" class="am-fade">
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzorów Harrisa-Benedicta</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.tdee.harrisBenedict}} kcal</span>
-								</div>
-							</div>
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzoru Mifflina St Jeora</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.tdee.hifflinStJeor}} kcal</span>
-								</div>
-							</div>
-							
-							<hr class="hr-well" />
-
-							<div class="form-group-nomargins font09 fontGrayed">
-								<div class="col-md-8 col-md-offset-2 control-value">
-									<span>*Wybrana wartość to wynik ze wzoru Mifflina St Jeora. Jest on zależny od wielu zmiennych przez co jest o wiele dokładniejszy. Wzór Harrisa-Benedicta ma zbyt duży rozrzut wartości.</span>
+							<label class="control-label col-sm-4">Udział % białka</label>
+							<div class="col-sm-8">
+								<div class="nestedSlider">
+									<rzslider rz-slider-model="vm.person.macroSlider.proteins" rz-slider-options="vm.macroSlierOptions"></rzslider>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-7" for="weight">Cel diety</label>
-							<div class="col-sm-5 control-value">
-								<span ng-if="vm.person.differental < 0">Redukcja wagi ( {{vm.person.differental}} kcal )</span>
-								<span ng-if="vm.person.differental == 0">Utrzymanie wagi</span>
-								<span ng-if="vm.person.differental > 0">Zdobywanie masy ( +{{vm.person.differental}} kcal )</span>
+							<label class="control-label col-sm-4">Udział  % węglowodanów</label>
+							<div class="col-sm-8">
+								<div class="nestedSlider">
+									<rzslider rz-slider-model="vm.person.macroSlider.carbons" rz-slider-options="vm.macroSlierOptions"></rzslider>
+								</div>
 							</div>
 						</div>
 
-						<hr class="hr-well-margins" />
+						
+						<div class="form-group">
+							<label class="control-label col-sm-4">Udział % tłuszczy</label>
+							<div class="col-sm-8">
+								<div class="nestedSlider">
+									<rzslider rz-slider-model="vm.person.macroSlider.fats" rz-slider-options="vm.macroSlierOptions"></rzslider>
+								</div>
+							</div>
+						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-7 font11 fontHighlight" for="weight">Dzienne zapotrzebowanie uwzględniając cel</label>
-							<div class="col-sm-5 control-value font11 fontHighlight">
-								<span><b>{{vm.person.tdee.average*1 + vm.person.differental*1}} kcal</b></span>
+							<label class="control-label col-sm-4">Suma makroskładników</label>
+							<div class="col-sm-8">
+								<div class="col-sm-5 control-value">
+									<span class="">{{vm.person.macroSlider.sum}}%</span>
+								</div>
 							</div>
 						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-4"></label>
+							<div class="col-sm-8">
+								<p class="fontGrayed" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">Suma makroskładników musi wynosic 100% a aktualnie wynosi <b>{{vm.person.macroSlider.sum}}%</b>. Proszę popraw ustawienia.</p>
+							</div>
+						</div>
+						
+						<div class="form-group" class="am-fade" ng-if="vm.person.macroSlider.sum == 100 && vm.person.macroSlider.view">
+														<label class="control-label col-sm-4"></label>
+							<div class="col-sm-8">
+								  <table class="table table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+							</div>
+
+						</div>
+
 					</div>
 				</div>
 			</form>

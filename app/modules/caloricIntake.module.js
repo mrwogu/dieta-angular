@@ -6,7 +6,6 @@
 		'ngMessages', 
 		'ngAnimate',
 		'rzModule',
-		'ngStorage',
 		'mgcrea.ngStrap',
 		'ngSanitize',
 		'calculationsModule'

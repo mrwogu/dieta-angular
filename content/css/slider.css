@@ -25,3 +25,15 @@
 .rzslider .rz-pointer {
     background-color: #74b2db;
 }
+
+.nestedSlider {
+    display:block;
+    overflow:hidden;
+}
+
+.nestedSlider > .nestedLabel {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}

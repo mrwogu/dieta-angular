@@ -58,7 +58,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-7" for="weight">Dzienne zapotrzebowanie kaloryczne</label>
 							<div class="col-sm-5 control-value">
-								<span>{{vm.person.tdee.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.tdeeDetails=!vm.options.tdeeDetails">(szczegóły)</a></span>
+								<span>{{vm.person.tdee.hifflinStJeor}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.tdeeDetails=!vm.options.tdeeDetails">(szczegóły)</a></span>
 							</div>
 						</div>
 
@@ -99,7 +99,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-7 font11 fontHighlight" for="weight">Dzienne zapotrzebowanie uwzględniając cel</label>
 							<div class="col-sm-5 control-value font11 fontHighlight">
-								<span><b>{{vm.person.tdee.average*1 + vm.person.differental*1}} kcal</b></span>
+								<span><b>{{vm.person.tdee.total}} kcal</b></span>
 							</div>
 						</div>
 					</div>
