@@ -1,5 +1,3 @@
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">
 		<h2>Makro i posiłki</h2>
 		
         <div class="panel-group margintop30">
@@ -38,12 +36,16 @@
 											<dd>{{vm.person.macroSlider.proteins}}%</dd>
 											<dt>tłuszcze</dt>
 											<dd>{{vm.person.macroSlider.fats}}%</dd>
-											<hr class="hr-well">
-											<dt ng-class="{'fontRed font11' : (vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view)}">suma</dt>
-											<dd ng-class="{'fontRed font11' : (vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view)}">{{vm.person.macroSlider.sum}}% <span class="fontRed" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</span></dd>
+											<div  class="fontRed font11" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">
+												<hr class="hr-well">
+												<dt>suma</dt>
+												<dd>{{vm.person.macroSlider.sum}}%</dd>
+
+												<p class="margintop10">(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</p>
+											</div>
 										</dl>
 									</span>
-									<p>Dieta 50%/30%/20% to dieta zbilansowana. Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
+									<p>Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
 							</div>
 						</div>
 
@@ -82,6 +84,3 @@
 				</div>
 			</form>
 		</div>
-
-    </div>
-</div>
