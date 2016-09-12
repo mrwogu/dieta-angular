@@ -7,7 +7,86 @@
 		.module('calculationsModule')
 		.service('bmrService', bmrService)
 		.service('tdeeService', tdeeService)
+		.service('macroService', macroService)
 	;
+
+	macroService.$inject = [];
+	function macroService() {
+
+		this.setMeals = function(person) {
+			
+			var meals = [];
+
+			var percentAverage = parseInt(100/parseInt(person.mealsAmount));
+			var kcalAverage = parseInt(parseInt(person.tdee.total)/parseInt(person.mealsAmount));
+			
+			var proteinsAverage = parseFloat(parseFloat(person.macroPerson.proteins.gram)/parseFloat(person.mealsAmount)).toFixed(1);
+			var carbonsAverage = parseFloat(parseFloat(person.macroPerson.carbons.gram)/parseFloat(person.mealsAmount)).toFixed(1);
+			var fatsAverage = parseFloat(parseFloat(person.macroPerson.fats.gram)/parseFloat(person.mealsAmount)).toFixed(1);
+
+			for (var i = 1; i <= person.mealsAmount; i++) {
+
+				var singleMeal = {
+					name: "Posiłek " + i,
+					kcal: kcalAverage,
+					carbons: {
+						percent: percentAverage,
+						grams: carbonsAverage
+					},
+					proteins: {
+						percent: percentAverage,
+						grams: proteinsAverage
+					},
+					fats: {
+						percent: percentAverage,
+						grams: fatsAverage
+					}
+				};
+
+				meals.push(singleMeal);
+
+			}
+
+			return meals;
+		}
+
+		this.sumSliderMacro = function(macroSlider) {
+
+			var sum = parseInt(macroSlider.proteins) +
+			parseInt(macroSlider.carbons) +
+			parseInt(macroSlider.fats);
+
+			return sum;
+		}
+
+		this.calculatePersonMacro = function(person) {
+			
+			var personMacro = {};
+
+			personMacro.proteins = {};
+			personMacro.carbons = {};
+			personMacro.fats = {};
+
+			personMacro.proteins.kcal = 
+				parseInt((parseFloat(person.tdee.total)*parseFloat(person.macroSlider.proteins))/100);
+
+			personMacro.carbons.kcal = 
+				parseInt((parseFloat(person.tdee.total)*parseFloat(person.macroSlider.carbons))/100);
+
+			personMacro.fats.kcal = 
+				parseInt((parseFloat(person.tdee.total)*parseFloat(person.macroSlider.fats))/100);
+
+			personMacro.proteins.gram = parseFloat(personMacro.proteins.kcal/4).toFixed(1);
+			personMacro.carbons.gram = parseFloat(personMacro.carbons.kcal/4).toFixed(1);
+			personMacro.fats.gram = parseFloat(personMacro.fats.kcal/9).toFixed(1);
+
+			personMacro.proteins.gramOnKg = parseFloat(personMacro.proteins.gram/person.weight).toFixed(1);
+			personMacro.carbons.gramOnKg = parseFloat(personMacro.carbons.gram/person.weight).toFixed(1);
+			personMacro.fats.gramOnKg = parseFloat(personMacro.fats.gram/person.weight).toFixed(1);
+
+			return personMacro;
+		}
+	}
 	
 	tdeeService.$inject = [];
 	function tdeeService() {
