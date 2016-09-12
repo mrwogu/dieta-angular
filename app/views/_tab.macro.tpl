@@ -25,30 +25,43 @@
 							</div>
 						</div>
 
+						<hr />
+						
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="mealsAmount">Proporcja makroskładników w diecie</label>
 							<div class="col-sm-8 control-value">
-									<span>
-										<dl class="dl-horizontal">
-											<dt>węglowodany</dt>
-											<dd>{{vm.person.macroSlider.carbons}}%</dd>
-											<dt>białko</dt>
-											<dd>{{vm.person.macroSlider.proteins}}%</dd>
-											<dt>tłuszcze</dt>
-											<dd>{{vm.person.macroSlider.fats}}%</dd>
-											<div  class="fontRed font11" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">
-												<hr class="hr-well">
-												<dt>suma</dt>
-												<dd>{{vm.person.macroSlider.sum}}%</dd>
+								<span>
+									<table class="table">
+										<tr>
+											<td><b>węglowodany</b></td>
+											<td>{{vm.person.macroSlider.carbons}}%</td>
+											<td class="fontGrayed font09">(2,2g na kg masy ciała, 512kcal)</td>
+										</tr>
+										<tr>
+											<td><b>białko</b></td>
+											<td>{{vm.person.macroSlider.proteins}}%</td>
+											<td class="fontGrayed font09">(2,2g na kg masy ciała, 612kcal)</td>
+										</tr>
+										<tr>
+											<td><b>tłuszcze</b></td>
+											<td>{{vm.person.macroSlider.fats}}%</td>
+											<td class="fontGrayed font09">(2,2g na kg masy ciała, 2312kcal)</td>
+										</tr>
+									</table>
+									
+									<div  class="fontRed font11" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">
+										<hr class="hr-well">
+										<dt>suma</dt>
+										<dd>{{vm.person.macroSlider.sum}}%</dd>
 
-												<p class="margintop10">(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</p>
-											</div>
-										</dl>
-									</span>
-									<p>Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
+										<p class="margintop10">(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</p>
+									</div>
+									
+								</span>
+								<p class="fontGrayed font09">Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
 							</div>
 						</div>
-
+												
 						<div ng-if="vm.options.macroSlider" class="am-fade">
 							<div class="form-group">
 								<label class="control-label col-sm-4">Udział % białka</label>
@@ -78,6 +91,32 @@
 								</div>
 							</div>
 
+						</div>
+						
+						<hr />
+						
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="mealsAmount">Rozkład kalorii w posiłkach</label>
+							<div class="col-sm-8 control-value">
+								<span>
+									<dl class="dl-horizontal">
+										<dt>posiłek1</dt>
+										<dd>{{vm.person.macroSlider.carbons}}%</dd>
+										<dt>posiłek2</dt>
+										<dd>{{vm.person.macroSlider.proteins}}%</dd>
+										<dt>posiłek3</dt>
+										<dd>{{vm.person.macroSlider.fats}}%</dd>
+										<div  class="fontRed font11" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">
+											<hr class="hr-well">
+											<dt>suma</dt>
+											<dd>{{vm.person.macroSlider.sum}}%</dd>
+
+											<p class="margintop10">(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</p>
+										</div>
+									</dl>
+								</span>
+								<p class="fontGrayed font09">Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
+							</div>
 						</div>
 
 					</div>

@@ -40,18 +40,18 @@
 		}
 
 		var _macroSumAll = function() {
-				vm.person.macroSlider.sum = parseInt(vm.person.macroSlider.proteins) +
-				parseInt(vm.person.macroSlider.carbons) +
-				parseInt(vm.person.macroSlider.fats);
+			vm.person.macroSlider.sum = parseInt(vm.person.macroSlider.proteins) +
+			parseInt(vm.person.macroSlider.carbons) +
+			parseInt(vm.person.macroSlider.fats);
 
-				vm.data = [vm.person.macroSlider.proteins, vm.person.macroSlider.carbons, vm.person.macroSlider.fats];
+			vm.data = [vm.person.macroSlider.proteins, vm.person.macroSlider.carbons, vm.person.macroSlider.fats];
 
-				if (vm.person.macroSlider.sum == 100)
-					$timeout(function() {
-						vm.person.macroSlider.view = true;
-					}, 1000);
-				else 
-					vm.person.macroSlider.view = false;
+			if (vm.person.macroSlider.sum == 100)
+				$timeout(function() {
+					vm.person.macroSlider.view = true;
+				}, 1000);
+			else 
+				vm.person.macroSlider.view = false;
 		}
 
 		/* public */
@@ -68,6 +68,14 @@
 		else {
 			vm.person = vm.localStorage.person = angular.copy(_defaultPerson);
 		}
+		
+		// auto reload bmr and tdee if any changes occured
+		$scope.$watch('vm.person', function() {
+			if (vm.personForm && !vm.personForm.$invalid) {
+				vm.person.bmr = bmrService.getBmr(vm.person);
+				vm.person.tdee = tdeeService.getTdee(vm.person);
+			}
+		}, true);
 		
 		vm.submit = function() {
 			vm.personForm.submitted = true;
