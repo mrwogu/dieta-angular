@@ -1,17 +1,30 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-		<h2>Dane personalne</h2>
 		
+		<h2>Formularz nowej diety</h2>
 		<p>Postaraj się dokładnie uzupełnić poniższy formularz. <b>Nie zniechęć się dużą ilością pytań.</b> Możesz odnieść wrażenie, że niektóre pytania są nadmiarowe lub powtarzają się, jednak jest to spowodowane połączeniem kilku metod wyznaczania zapotrzebowania kalorycznego na raz.</p>
 
-        <div class="panel-group margintop30">
-			<form name="vm.personForm" class="form-horizontal" novalidate>
+		<form name="vm.personForm" class="form-horizontal" novalidate>
+
+			<div class="panel-group margintop30">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4>Podstawowe dane</h4>
-						<p>Posłużą do obliczenia podstawowego zapotrzebowania kalorycznego (BMR)</p>
+						<p>Posłużą do obliczenia podstawowego zapotrzebowania kalorycznego</p>
 					</div>
 					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="name">Imię</label>
+							<div class="col-sm-8">
+								<div class="input-group">
+									<input type="text" class="form-control" name="name" id="name" ng-model="vm.person.name" required/>
+									<span class="input-group-addon"></span>
+								</div>
+								<div ng-messages="vm.personForm.name.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.name.$touched || vm.personForm.submitted">
+									<div ng-message="required">To pole jest wymagane</div>
+								</div>
+							</div>
+						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="age">Wiek</label>
 							<div class="col-sm-8">
@@ -80,10 +93,10 @@
 									<label class="btn btn-default"><input type="radio" name="bulid" value="ekt" required/>Ektoformik<br/><small>(+700-900 kcal)</small></label>
 								</div>
 								<div ng-messages="vm.personForm.bulid.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.ganer.$touched || vm.personForm.submitted">
-										<div ng-message="required">To pole jest wymagane</div>
+									<div ng-message="required">To pole jest wymagane</div>
 								</div>		
 								
-								<ul class="clearfix margintop10">
+								<ul class="clearfix margintop10 fontGrayed">
 									<li><b>Endoformik</b> - osoba charakteryzująca się tendencją do tycia, grubymi kościami, dość dużą masą</li>
 									<li><b>Mezoformik</b> - osoba charakteryzująca się względnie normalną (nie odstającą w żadną stronę) budową</li>
 									<li><b>Ektoformik</b> - osoba charakteryzująca się bardzo szczupłą budową, występują problemy z nabieraniem masy</li>
@@ -95,7 +108,7 @@
 					
 					<div class="panel-heading">
 						<h4>Dane o trybie życia</h4>
-						<p>Posłużą do obliczenia kalorii spalonych w codziennych czynnościach i pracy (NEAT)</p>
+						<p>Posłużą do obliczenia kalorii spalonych w codziennych czynnościach</p>
 					</div>
 					<div class="panel-body">
 						<div class="form-group">
@@ -110,7 +123,7 @@
 									<div ng-message="required">To pole jest wymagane</div>
 								</div>
 								
-								<ul class="clearfix margintop10">
+								<ul class="clearfix margintop10 fontGrayed">
 									<li><b>Lekka</b> - praca umysłowa, np. uczeń szkoły, student, programista, sekretarka, księgowa, kierowca itd.</li>
 									<li><b>Średnia</b> - lekka praca fizyczna, np. listonosz, mechanik samochodowy, kelner, sprzedawca, kierowca itd.</li>
 									<li><b>Ciężka</b> - ciężka praca fizyczna, np. praca na budowie, praca w fabryce, noszenie i dźwiganie itd.</li>
@@ -128,7 +141,7 @@
 									<div ng-message="required">To pole jest wymagane</div>
 								</div>
 								
-								<ul class="clearfix margintop10">
+								<ul class="clearfix margintop10 fontGrayed">
 									<li><b>1.0</b> - brak pracy, brak szkoły, brak aktywności fizycznej</li>
 									<li><b>1.2</b> - praca siedząca, brak treningów</li>
 									<li><b>1.4</b> - praca siedząca/szkoła, lekkie treningi 3x w tygodniu</li>
@@ -144,7 +157,7 @@
 					
 					<div class="panel-heading">
 						<h4>Dane o treningu</h4>
-						<p>Posłużą do obliczenia kalorii spalonych przez dodatkowy wysiłek fizyczny (TEA i EPOC)</p>
+						<p>Posłużą do obliczenia kalorii spalonych przez dodatkowy trening</p>
 					</div>
 					<div class="panel-body">
 
@@ -153,7 +166,7 @@
 							<div class="col-sm-8" bs-radio-group>
 								<div class="btn-group" ng-model="vm.person.isGym" bs-radio-group>
 									<label class="btn btn-default"><input type="radio" name="isGym" value="1" required/>Tak</label>
-									<label class="btn btn-default"><input type="radio" name="isGym" value="0" required/>Brak</label>
+									<label class="btn btn-default"><input type="radio" name="isGym" value="0" required/>Nie</label>
 								</div>
 								<div ng-messages="vm.personForm.isGym.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.isGym.$touched || vm.personForm.submitted">
 									<div ng-message="required">To pole jest wymagane</div>
@@ -214,7 +227,7 @@
 							<div class="col-sm-8" bs-radio-group>
 								<div class="btn-group" ng-model="vm.person.isCardio" bs-radio-group>
 									<label class="btn btn-default"><input type="radio" name="isCardio" value="1" required/>Tak</label>
-									<label class="btn btn-default"><input type="radio" name="isCardio" value="0" required/>Brak</label>
+									<label class="btn btn-default"><input type="radio" name="isCardio" value="0" required/>Nie</label>
 								</div>
 								<div ng-messages="vm.personForm.isCardio.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.isCardio.$touched || vm.personForm.submitted">
 									<div ng-message="required">To pole jest wymagane</div>
@@ -270,8 +283,8 @@
 						
 					</div>	
 					<div class="panel-heading">
-						<h4>Straty termiczne pożywienia</h4>
-						<p>Dane posłużą do obliczenia strat w odżywianiu (TEF)</p>
+						<h4>Straty termiczne pokarmu</h4>
+						<p>Dane posłużą do obliczenia strat w przyrządzanych pokarmach</p>
 					</div>
 					<div class="panel-body">
 						<div class="form-group">
@@ -286,7 +299,7 @@
 									<div ng-message="required">To pole jest wymagane</div>
 								</div>
 								
-								<ul class="clearfix margintop10">
+								<ul class="clearfix margintop10 fontGrayed">
 									<li><b>Naturalne</b> - duża ilość naturalych produków (jajka, twarogi), poddanych jak najmniejszej obróbce cieplnej</li>
 									<li><b>Zbliansowane</b> - dieta zbilansowana, np. naturalne śniadania oraz przetworzone cieplnie obiady</li>
 									<li><b>Przetworzone</b> - bardzo duża ilość gotowanych i smażonych produktów z dużą stratą termiczną</li>
@@ -300,7 +313,6 @@
 						<p>Dane posłużą do korekcji ostatecznego dziennego zapotrzebowania kalorycznego</p>
 					</div>
 					<div class="panel-body">
-
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="target">Cel diety</label>
 							<div class="col-sm-8" bs-radio-group>
@@ -327,20 +339,135 @@
 									<div ng-message="min">Wpisano zbyt małą wartość</div>
 									<div ng-message="max">Wpisano zbyt dużą wartość</div>
 								</div>
-								<p class="clearfix margintop10">Różnica kalorii powinna być dodatnia lub ujemna w zależności od celu diety. Wartość należy systematycznie zwiększać lub pomniejszać w danych odstępach czasu w przypadku braku efektów lub w przypadku kontynuowania diety. Przykładowo podczas redukcji obcinać po 200 kalorii co 3 tygodnie.</p>
+								<p class="clearfix margintop10 fontGrayed">Różnica kalorii powinna być dodatnia lub ujemna w zależności od celu diety. Wartość należy systematycznie zwiększać lub pomniejszać w danych odstępach czasu w przypadku braku efektów lub w przypadku kontynuowania diety. Przykładowo podczas redukcji obcinać po 200 kalorii co 3 tygodnie.</p>
 							</div>
+						</div>
+					</div>
+
+					<div class="panel-heading">
+						<h4>Proporcje makroskładników</h4>
+						<p>Wybierz procentowy rozkład makroskładników w <b>{{vm.person.tdee.total}} kcal</b></p>
+					</div>
+					<div class="panel-body">
+
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="mealsAmount">Ilość posiłków dziennie</label>
+							<div class="col-sm-8" bs-radio-group>
+								<div class="btn-group" ng-model="vm.person.mealsAmount" bs-radio-group data-placement="right" data-type="info" data-animation="am-fade-and-scale" bs-tooltip="'Wybierz dzienną ilość posiłków jaką chcesz spożywać. Im większa ilość posiłków tym lepiej.'">
+									<label class="btn btn-default"><input ng-change="vm.mealsAmountChange()" type="radio" name="mealsAmount" value="3" required/>3<br /><small>posiłki</small></label>
+									<label class="btn btn-default"><input ng-change="vm.mealsAmountChange()" type="radio" name="mealsAmount" value="4" required/>4<br /><small>posiłki</small></label>
+									<label class="btn btn-default"><input ng-change="vm.mealsAmountChange()" type="radio" name="mealsAmount" value="5" required/>5<br /><small>posiłków</small></label>
+									<label class="btn btn-default"><input ng-change="vm.mealsAmountChange()" type="radio" name="mealsAmount" value="6" required/>6<br /><small>posiłków</small></label>
+								</div>
+								<div ng-messages="vm.personForm.mealsAmount.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.mealsAmount.$touched || vm.personForm.submitted">
+									<div ng-message="required">To pole jest wymagane</div>
+								</div>
+							</div>
+						</div>
+
+						<hr />
+						
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="mealsAmount">Rozkład makroskładników</label>
+							<div class="col-sm-8 control-value">
+								<span>
+									<table class="table">
+										<tr>
+											<td><b>węglowodany</b></td>
+											<td>{{vm.person.macroSlider.carbons}}%</td>
+											<td class="fontGrayed font09">czyli <b>{{vm.person.macroPerson.carbons.gramOnKg}} g</b> na kg masy ciała ({{vm.person.macroPerson.carbons.kcal}} kcal)</td>
+										</tr>
+										<tr>
+											<td><b>białko</b></td>
+											<td>{{vm.person.macroSlider.proteins}}%</td>
+											<td class="fontGrayed font09">czyli <b>{{vm.person.macroPerson.proteins.gramOnKg}} g</b> na kg masy ciała ({{vm.person.macroPerson.proteins.kcal}} kcal)</td>
+										</tr>
+										<tr>
+											<td><b>tłuszcze</b></td>
+											<td>{{vm.person.macroSlider.fats}}%</td>
+											<td class="fontGrayed font09">czyli <b>{{vm.person.macroPerson.fats.gramOnKg}} g</b> na kg masy ciała ({{vm.person.macroPerson.fats.kcal}} kcal)</td>
+										</tr>
+										<tr class="input-error" ng-if="vm.person.macroSlider.sum != 100 || vm.person.macroSlider.error">
+											<td><b>suma</b></td>
+											<td>{{vm.person.macroSlider.sum}}%</td>
+											<td></td>
+										</tr>
+									</table>
+									
+									<div class="input-error" ng-if="vm.person.macroSlider.sum != 100 || vm.person.macroSlider.error">
+										<p>(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</p>
+									</div>
+									
+								</span>
+								<p class="fontGrayed">Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
+							</div>
+						</div>
+												
+						<div ng-if="vm.options.macroSlider" class="am-fade">
+							<div class="form-group">
+								<label class="control-label col-sm-4">Udział % białka</label>
+								<div class="col-sm-8">
+									<div class="nestedSlider">
+										<rzslider rz-slider-model="vm.person.macroSlider.proteins" rz-slider-options="vm.macroSlierOptions"></rzslider>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-4">Udział  % węglowodanów</label>
+								<div class="col-sm-8">
+									<div class="nestedSlider">
+										<rzslider rz-slider-model="vm.person.macroSlider.carbons" rz-slider-options="vm.macroSlierOptions"></rzslider>
+									</div>
+								</div>
+							</div>
+
+							
+							<div class="form-group">
+								<label class="control-label col-sm-4">Udział % tłuszczy</label>
+								<div class="col-sm-8">
+									<div class="nestedSlider">
+										<rzslider rz-slider-model="vm.person.macroSlider.fats" rz-slider-options="vm.macroSlierOptions"></rzslider>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
+						<hr />
+						
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="mealsAmount">Poglądowy rozkład posiłków</label>
+							<div class="col-sm-8 control-value">
+								<span>
+									<table class="table">
+										<tr ng-repeat="item in vm.person.macroMeals" ng-animate="'animate'">
+											<td><b>{{item.name}}</b></td>
+											<td class="font09">W: {{item.carbons.grams}} g</td>
+											<td class="font09">B: {{item.proteins.grams}} g</td>
+											<td class="font09">T: {{item.fats.grams}} g</td>
+											<td class="fontGrayed font09">{{item.kcal}} kcal</td>
+										</tr>
+									</table>
+								</span>
+								<p class="fontGrayed">Wartości poszczególnych posiłków będzie można dostosować indywidualnie w kolejnym etapie</p>
+							</div>
+						</div>
+
 						</div>
 
 					</div>
 				</div>
-			</form>
-			
-			<div class="col-sm-12 margintop10">
-				<button class="btn btn-default pull-left" ng-click="vm.clear()"><i class="fa fa-times" aria-hidden="true"></i> Wyczyść formularz</button>
-				<button class="btn btn-success pull-right" ng-click="vm.submit()"><i class="fa fa-check" aria-hidden="true"></i> Oblicz zapotrzebowanie kaloryczne</button>
+
 			</div>
 
-        </div>
+			<div class="col-sm-12 margintop10">
+				<button class="btn btn-default pull-left" ng-click="vm.clear()"><i class="fa fa-times" aria-hidden="true"></i> Wyczyść formularz</button>
+				<button class="btn btn-success pull-right" ng-click="vm.submit()"><i class="fa fa-arrow-right" aria-hidden="true"></i> Dalej</button>
+			</div>
+
+		</form>
 
 	</div>
 </div>

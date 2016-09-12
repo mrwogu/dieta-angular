@@ -30,7 +30,7 @@
 				controllerAs: 'vm',
 				templateUrl : dirPrefix + 'app.tpl'
 			})
-			.when("/dane-personalne", {
+			.when("/formularz-diety", {
 				controller: 'personalInformationCtrl',
 				controllerAs: 'vm',
 				templateUrl : dirPrefix + 'personal-informations.tpl'

@@ -7,96 +7,77 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4>Proporcje makroskładników</h4>
-						<p></p>
+						<p>Wybierz procentowy rozkład makroskładników w <b>{{vm.person.tdee.total}} kcal</b></p>
 					</div>
 					<div class="panel-body">
+
+					<div class="panel-body">
 						<div class="form-group">
-							<label class="control-label col-sm-7" for="weight">Podstawowe dzienne zapotrzebowanie kaloryczne (BMR)</label>
-							<div class="col-sm-5 control-value">
-								<span>{{vm.person.bmr.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.bmrDetails=!vm.options.bmrDetails">(szczegóły)</a></span>
+							<label class="control-label col-sm-4" for="mealsAmount">Ilość posiłków dziennie</label>
+							<div class="col-sm-8" bs-radio-group>
+								<div class="btn-group" ng-model="vm.person.makro.mealsAmount" bs-radio-group data-placement="right" data-type="info" data-animation="am-fade-and-scale" bs-tooltip="'Wybierz dzienną ilość posiłków jaką chcesz spożywać. Im większa ilość posiłków tym lepiej.'">
+									<label class="btn btn-default"><input type="radio" name="mealsAmount" value="3" required/>3<br /><small>posiłki</small></label>
+									<label class="btn btn-default"><input type="radio" name="mealsAmount" value="4" required/>4<br /><small>posiłki</small></label>
+									<label class="btn btn-default"><input type="radio" name="mealsAmount" value="5" required/>5<br /><small>posiłków</small></label>
+									<label class="btn btn-default"><input type="radio" name="mealsAmount" value="6" required/>6<br /><small>posiłków</small></label>
+								</div>
+								<div ng-messages="vm.personForm.mealsAmount.$error" class="input-error am-fade" role="alert" ng-if="vm.personForm.mealsAmount.$touched || vm.personForm.submitted">
+									<div ng-message="required">To pole jest wymagane</div>
+								</div>
 							</div>
 						</div>
 
-						<div ng-if="vm.options.bmrDetails" class="am-fade">
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzoru Harrisa-Benedicta</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.harrisBenedict1}} kcal</span>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="mealsAmount">Proporcja makroskładników w diecie</label>
+							<div class="col-sm-8 control-value">
+									<span>
+										<dl class="dl-horizontal">
+											<dt>węglowodany</dt>
+											<dd>{{vm.person.macroSlider.carbons}}%</dd>
+											<dt>białko</dt>
+											<dd>{{vm.person.macroSlider.proteins}}%</dd>
+											<dt>tłuszcze</dt>
+											<dd>{{vm.person.macroSlider.fats}}%</dd>
+											<hr class="hr-well">
+											<dt ng-class="{'fontRed font11' : (vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view)}">suma</dt>
+											<dd ng-class="{'fontRed font11' : (vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view)}">{{vm.person.macroSlider.sum}}% <span class="fontRed" ng-if="vm.person.macroSlider.sum != 100 || !vm.person.macroSlider.view">(Suma makroskładników musi wynosic 100%. Popraw ustawienia)</span></dd>
+										</dl>
+									</span>
+									<p>Dieta 50%/30%/20% to dieta zbilansowana. Możesz zmienić proporcje makroskładników klikając <a href="" ng-click="vm.options.macroSlider=!vm.options.macroSlider">tutaj</a></p>
+							</div>
+						</div>
+
+						<div ng-if="vm.options.macroSlider" class="am-fade">
+							<div class="form-group">
+								<label class="control-label col-sm-4">Udział % białka</label>
+								<div class="col-sm-8">
+									<div class="nestedSlider">
+										<rzslider rz-slider-model="vm.person.macroSlider.proteins" rz-slider-options="vm.macroSlierOptions"></rzslider>
+									</div>
 								</div>
 							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-4">Udział  % węglowodanów</label>
+								<div class="col-sm-8">
+									<div class="nestedSlider">
+										<rzslider rz-slider-model="vm.person.macroSlider.carbons" rz-slider-options="vm.macroSlierOptions"></rzslider>
+									</div>
+								</div>
+							</div>
+
 							
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według ulepszonego wzoru Harrisa-Benedicta</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.harrisBenedict2}} kcal</span>
-								</div>
-							</div>
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzoru Mifflina St Jeora</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.hifflinStJeor}} kcal</span>
-								</div>
-							</div>
-
-							<hr class="hr-well" />
-
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Wartość średnia</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.bmr.average}} kcal</span>
+							<div class="form-group">
+								<label class="control-label col-sm-4">Udział % tłuszczy</label>
+								<div class="col-sm-8">
+									<div class="nestedSlider">
+										<rzslider rz-slider-model="vm.person.macroSlider.fats" rz-slider-options="vm.macroSlierOptions"></rzslider>
+									</div>
 								</div>
 							</div>
 
 						</div>
 
-
-						<div class="form-group">
-							<label class="control-label col-sm-7" for="weight">Dzienne zapotrzebowanie kaloryczne</label>
-							<div class="col-sm-5 control-value">
-								<span>{{vm.person.tdee.average}} kcal</span><span class="pull-right"><a href="" ng-click="vm.options.tdeeDetails=!vm.options.tdeeDetails">(szczegóły)</a></span>
-							</div>
-						</div>
-
-						<div ng-if="vm.options.tdeeDetails" class="am-fade">
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzorów Harrisa-Benedicta</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.tdee.harrisBenedict}} kcal</span>
-								</div>
-							</div>
-							<div class="form-group-nomargins font09 fontGrayed">
-								<label class="control-label col-sm-7" for="weight">Według wzoru Mifflina St Jeora</label>
-								<div class="col-sm-5 control-value">
-									<span>{{vm.person.tdee.hifflinStJeor}} kcal</span>
-								</div>
-							</div>
-							
-							<hr class="hr-well" />
-
-							<div class="form-group-nomargins font09 fontGrayed">
-								<div class="col-md-8 col-md-offset-2 control-value">
-									<span>*Wybrana wartość to wynik ze wzoru Mifflina St Jeora. Jest on zależny od wielu zmiennych przez co jest o wiele dokładniejszy. Wzór Harrisa-Benedicta ma zbyt duży rozrzut wartości.</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label col-sm-7" for="weight">Cel diety</label>
-							<div class="col-sm-5 control-value">
-								<span ng-if="vm.person.differental < 0">Redukcja wagi ( {{vm.person.differental}} kcal )</span>
-								<span ng-if="vm.person.differental == 0">Utrzymanie wagi</span>
-								<span ng-if="vm.person.differental > 0">Zdobywanie masy ( +{{vm.person.differental}} kcal )</span>
-							</div>
-						</div>
-
-						<hr class="hr-well-margins" />
-
-						<div class="form-group">
-							<label class="control-label col-sm-7 font11 fontHighlight" for="weight">Dzienne zapotrzebowanie uwzględniając cel</label>
-							<div class="col-sm-5 control-value font11 fontHighlight">
-								<span><b>{{vm.person.tdee.average*1 + vm.person.differental*1}} kcal</b></span>
-							</div>
-						</div>
 					</div>
 				</div>
 			</form>
