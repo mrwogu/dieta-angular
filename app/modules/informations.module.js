@@ -71,7 +71,8 @@
 
 		// load model from localStorage at starting
 		if (typeof vm.localStorage.person == "object")
-			vm.person = vm.localStorage.person;
+			// prevent previous version of person in localStorage
+			vm.person = angular.merge({}, _defaultPerson, vm.localStorage.person);
 		else {
 			vm.person = vm.localStorage.person = angular.copy(_defaultPerson);
 		}
